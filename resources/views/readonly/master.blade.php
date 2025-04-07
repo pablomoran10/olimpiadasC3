@@ -15,15 +15,10 @@
 		<link rel="stylesheet" href="{{ asset('/ediciones/edicion2025/main.css') }}" />
 	</head>
 	<body class="is-preload">
-        <!-- Header -->
-        @include('readonly.header')
-		<!-- Wrapper -->
-        <div id="wrapper">
-            <!-- Main -->
-            @include('readonly.main')
-            <!-- Footer -->
-            @include('readonly.footer')
-        </div>
+
+        @include('readonly.partials.header')
+        @include('readonly.partials.wrapper')
+        @include('readonly.partials.footer')
 
 		<!-- Scripts -->
 			<script src="{{ asset('/readonly/assets/js/jquery.min.js') }}"></script>
