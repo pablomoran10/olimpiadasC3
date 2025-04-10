@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PatrocinadorController;
 use App\Http\Controllers\Admin\CategoriaController;
+use App\Http\Controllers\Admin\GradoController;
 use App\Http\Controllers\InscripcionesController;
 
 /*
@@ -41,6 +42,13 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function ()
         ->parameters(['centros' => 'centro']);
 });
 
+Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::resource('grados', GradoController::class)
+        ->parameters(['grados' => 'grado']);
+});
 
 
 Route::middleware('auth')->group(function () {

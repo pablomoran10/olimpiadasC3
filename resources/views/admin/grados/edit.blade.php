@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Crear Patrocinador') }}
+            {{ __('Editar Grado') }}
         </h2>
     </x-slot>
 
@@ -10,15 +10,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     @include('partials.alerts')
-                    <form action="{{ route('patrocinadores.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('grados.update', ['grado' => $grado]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="mb-4">
                             <label for="nombre" class="block text-gray-700">Nombre</label>
-                            <input type="text" name="nombre" id="nombre" value="{{ old('nombre') }}" class="w-full border-gray-300 rounded-md">
-                        </div>
-                        <div class="mb-4">
-                            <label for="logotipo" class="block text-gray-700">Logotipo</label>
-                            <input type="file" name="logotipo" id="logotipo" class="w-full border-gray-300 rounded-md">
+                            <input type="text" name="nombre" id="nombre" value="{{ old('nombre') ?? $grado->nombre }}" class="w-full border-gray-300 rounded-md">
                         </div>
                         <input type="submit" class="primary" value="Guardar"/>
                     </form>
