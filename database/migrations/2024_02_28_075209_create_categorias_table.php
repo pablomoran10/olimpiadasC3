@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 50);
             $table->unsignedBigInteger('grado_id')->nullable();
+            $table->string('descripcion', 255)->nullable();
             $table->timestamps();
             $table->foreign('grado_id')->references('id')->on('grados');
         });
