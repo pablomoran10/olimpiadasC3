@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('categoria_id')->constrained();
             $table->foreignId('edicion_id')->constrained('ediciones');
+            $table->integer('num_convocatoria')->nullable();
             $table->unique(['categoria_id', 'edicion_id']);
             $table->timestamps();
         });
