@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CategoriasTableSeeder extends Seeder
 {
@@ -12,6 +13,7 @@ class CategoriasTableSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('categorias')->truncate();
         foreach (self::$categorias as $categoria) {
             \App\Models\Categoria::create([
                 'id' => $categoria['id'],

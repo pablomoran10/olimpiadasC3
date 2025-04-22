@@ -20,8 +20,6 @@ class PruebasTableSeeder extends Seeder
         foreach (self::$pruebas as $prueba) {
             DB::table('pruebas')->insert([
                 'categorias_ediciones_id' => $prueba['categoria'],
-                // 'grado_id' => DB::table('grados')->where('nombre', self::$grados[$ciclo['grado']])->first()->id,
-                'patrocinadores_id' => DB::table('patrocinadores')->where('nombre', $prueba['patrocinador'])->first()->id,
                 'nombre' => $prueba['nombre'],
             ]);
         }
