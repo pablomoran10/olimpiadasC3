@@ -33,6 +33,9 @@ class Edicion extends Model
         return Edicion::orderBy('fecha_apertura', 'DESC')->first();
     }
 
-}
+    public function resultados()
+    {
+        return $this->hasOne(Resultado::class, 'id');
+    }
 
-//faltan añadir las relaciones entre tablas
+}
