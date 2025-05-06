@@ -10,6 +10,7 @@
                     <li><a href="#objetivos" class="active">Objetivos</a></li>
                     <li><a href="#categorias">Categorìas</a></li>
                     <li><a href="#inscripciones">Inscripciones</a></li>
+                    <li><a href="#horario">Horario</a></li>
                     <li><a href="#resultados">Resultados</a></li>
                     <li><a href="#patrocinadores">Patrocinadores</a></li>
                     <li><a href="#ejercicios_ediciones_anteriores">Ejercicios propuestos</a></li>

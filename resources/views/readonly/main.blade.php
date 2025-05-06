@@ -43,6 +43,15 @@
                             </div>
                         </section>
 
+                    <!-- Horario -->
+                    <section id="horario">
+                        <div class="container">
+                            <h3>Horario</h3>
+                            <img src="{{ asset('images/agendaOlimpica.jpeg') }}"
+                            alt="Agenda Olímpica" class="agenda-olimpica">
+                        </div>
+                    </section>
+
                     <!-- Four -->
                         <section id="resultados">
                             <x-frontend.resultados />

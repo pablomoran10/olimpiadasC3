@@ -97,7 +97,8 @@ class InscripcionesController extends Controller
         }
         \App\Models\Participante::insert($alumnos);
         // Enviar correo de confirmación al tutor
-        $mensajeCorreo = "Recibirá un correo electrónico con la confirmación de la inscripción.";
+        $mensajeCorreo = "Recibirá un correo electrónico con la confirmación de la inscripción."
+        $mensajeCorreo .= "<br />Por favor, revise su bandeja de entrada y la carpeta de spam.";
         try {
             \Mail::to($user->email)->send(new \App\Mail\InscripcionConfirmada($request->all()));
         } catch (\Exception $e) {
