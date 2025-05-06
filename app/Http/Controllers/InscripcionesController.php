@@ -76,7 +76,7 @@ class InscripcionesController extends Controller
         // Crear la inscripción del grupo
         $grupo = \App\Models\Grupo::create([
             'nombre' => $request->grupo,
-            'abreviatura' => substr('O' . $year . "_" . Str::slug($request->grupo), 20),
+            'abreviatura' => substr('O' . $year . "_" . Str::slug($request->grupo), 0, 20),
             'password' => Str::random(10),
             'tutor' => $user->id,
             'centro_id' => $request->centro,
