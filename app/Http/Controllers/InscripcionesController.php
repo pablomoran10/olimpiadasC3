@@ -42,7 +42,7 @@ class InscripcionesController extends Controller
                     'categoria', 'Los estudiantes del grado elegido no pueden inscribirse en la categoría seleccionada.'
                 );
             }
-            $alumnosMaximo = [3,3,10,7];
+            $alumnosMaximo = [0,3,3,10,7];
             // contar únicamente los nombres no null
             $alumnosEnviados = array_filter($validated['nombre'], function ($value) {
                 return !is_null($value);
