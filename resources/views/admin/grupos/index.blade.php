@@ -29,6 +29,8 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                         </form>
+                                        <br />
+                                        <a href="{{ route('grupos.crearUsuarioMoodle', $grupo) }}" class="btn btn-sm btn-warning">Crear Usuario Moodle</a>
                                     </td>
                                 </tr>
                                 <tr>

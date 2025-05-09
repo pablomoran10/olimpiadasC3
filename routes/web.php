@@ -49,6 +49,7 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function ()
     Route::resource('resultados', ResultadoController::class);
     Route::resource('grados', GradoController::class);
     Route::resource('grupos', GrupoController::class);
+    Route::get('grupos/{grupo}/crearUsuarioMoodle', [GrupoController::class, 'crearUsuarioMoodle'])->name('grupos.crearUsuarioMoodle');
     Route::resource('patrocinadores', PatrocinadorController::class)
         ->parameters(['patrocinadores' => 'patrocinador']);
     Route::resource('pruebas', PruebaController::class);
