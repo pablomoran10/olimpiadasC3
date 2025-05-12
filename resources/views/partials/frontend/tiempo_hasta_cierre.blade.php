@@ -1,7 +1,7 @@
 
                                     <span>
                                         @php
-                                            $fecha_cierre = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', session('edicion')->fecha_cierre);
+                                            $fecha_cierre = \Carbon\Carbon::parse(session('edicion')->fecha_cierre);
 
                                         @endphp
                                         Las inscripciones se cierran dentro de
