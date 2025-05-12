@@ -56,6 +56,10 @@
                             @endforeach
                         </tbody>
                     </table>
+                    @can('grupos.createUsersMoodle')
+                        <br />
+                        <a href="{{ route('grupos.crearUsuariosMoodle') }}" class="btn btn-sm btn-warning">Crear Todos los Usuarios Moodle</a>
+                    @endcan
                 </div>
             </div>
         </div>

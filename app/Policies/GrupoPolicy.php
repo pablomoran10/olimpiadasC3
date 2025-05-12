@@ -63,4 +63,9 @@ class GrupoPolicy
     {
         return $user->isTutor($grupo);
     }
+
+    public function createUsersMoodle(User $user): bool
+    {
+        return $user->isAdmin();
+    }
 }
