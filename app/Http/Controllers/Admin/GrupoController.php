@@ -97,11 +97,13 @@ class GrupoController extends Controller
 
     public function crearUsuarioMoodle(Grupo $grupo)
     {
+        $redirect = redirect()->route('grupos.index');
         $resultado = $this->moodleService->createUserFromGrupo($grupo);
         if (isset($resultado['error'])) {
             $error = 'Error al crear el usuario en Moodle: ' . $resultado['error'];
+            $redirect = $redirect->with('error', $error);
         }
-            return redirect()->route('grupos.index')->with('error', $error);
+        return $redirect;
     }
 
 }
