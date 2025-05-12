@@ -34,6 +34,7 @@
                                 <h3>Inscripciones</h3>
                                 @can('store-inscripcion')
                                     @include('partials.inscripciones.inscripcion_form')
+                                    @include('partials.frontend.tiempo_hasta_cierre')
                                 @else()
                                     <p>Las inscripciones están cerradas.</p>
                                     @if (session('edicion'))
