@@ -50,7 +50,7 @@ class MoodleServiceProvider extends ServiceProvider
                 [
                     'username'  => $grupo->abreviatura,
                     'firstname' => $grupo->nombre,
-                    'lastname'  => $grupo->nombre,
+                    'lastname'  => $grupo->centro ? $grupo->centro->dencen : $grupo->nombre,
                     'email'     => $grupo->abreviatura . '@olimpiadasC3.es',
                     'password'  => $grupo->password,
                     'auth'      => 'manual',
