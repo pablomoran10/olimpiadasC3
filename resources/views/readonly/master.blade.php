@@ -13,7 +13,7 @@
         <meta name="author" content="CIFP Carlos III" />
         <meta lang="es" />
 		<link rel="stylesheet" href="{{ asset('storage/ediciones/edicion' . \App\Models\Edicion::getEdicionActual()->id . '/main.css') }}" />
-
+        <link rel="icon" href="{{ asset('favicon.ico') }}">
         <!-- Carrusel patrocinadores CSS -->
         <link rel="stylesheet" type="text/css" href="{{ asset('/slick/slick.css') }}"/>
         <link rel="stylesheet" type="text/css" href="{{ asset('/slick/slick-theme.css') }}"/>
