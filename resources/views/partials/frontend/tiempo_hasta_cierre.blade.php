@@ -1,12 +1,6 @@
-
-                                    <span>
-                                        @php
-                                            $fecha_cierre = \Carbon\Carbon::parse(session('edicion')->fecha_cierre);
-
-                                        @endphp
-                                        Las inscripciones se cierran dentro de
-                                        {{ $fecha_cierre->diffInDays() }} días
-                                        {{ $fecha_cierre->diffInHours() % 24 }} horas
-                                        {{ $fecha_cierre->diffInMinutes() % 60 }} minutos
-                                        {{ $fecha_cierre->diffInSeconds() % 60 }} segundos
-                                    </span>
+                                    <script src="https://cdn.logwork.com/widget/countdown.js"></script>
+                                    <div style="width:320px; display:block;margin:auto">
+                                        <a href="https://logwork.com/countdown-qc9t" class="countdown-timer" data-style="circles" data-timezone="Europe/Madrid" data-language="es" data-textcolor="#2d32bd" data-date="{{ \Carbon\Carbon::parse(session('edicion')->fecha_cierre) }}" data-background="#9c51b3" data-digitscolor="#2d32bd" data-unitscolor="#2d32bd">
+                                            Las inscripciones finalizan en:
+                                        </a>
+                                    </div>
