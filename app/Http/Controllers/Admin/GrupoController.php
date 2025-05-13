@@ -6,6 +6,7 @@ use App\Models\Grupo;
 use App\Providers\MoodleServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\MessageBag;
 
 class GrupoController extends Controller
 {
@@ -98,10 +99,32 @@ class GrupoController extends Controller
     public function crearUsuarioMoodle(Grupo $grupo)
     {
         $redirect = redirect()->route('grupos.index');
-        $resultado = $this->moodleService->createUserFromGrupo($grupo);
-        if (isset($resultado['error'])) {
-            $error = 'Error al crear el usuario en Moodle: ' . $resultado['error'];
-            $redirect = $redirect->with('error', $error);
+        $resultado = $this->moodleService->createUsersFromGrupos(collect([$grupo]));
+        $redirect = $this->getWith($redirect, $resultado);
+
+        return $redirect;
+    }
+
+    public function crearUsuariosMoodle()
+    {
+        $redirect = redirect()->route('grupos.index');
+        $resultado = $this->moodleService->createUsersFromGrupos(Grupo::all());
+        $redirect = $this->getWith($redirect, $resultado);
+        return $redirect;
+    }
+
+    protected function getWith($redirect, $resultado)
+    {
+        $errores = new MessageBag(); // Crear una instancia de MessageBag
+        foreach ($resultado as $grupo => $resultadoGrupo) {
+            if (!$resultadoGrupo) {
+                $errores->add('grupo', "Error al crear usuarios del grupo: $grupo");
+            }
+        }
+        if ($errores->isNotEmpty()) {
+            $redirect->withErrors($errores); // Usar withErrors para pasar los errores
+        } else {
+            $redirect->with('success', 'Usuarios creados correctamente en Moodle.');
         }
         return $redirect;
     }
