@@ -20,6 +20,7 @@
                                 <th class="px-4 py-2">Fecha Cierre</th>
                                 <th class="px-4 py-2">File CSS</th>
                                 <th class="px-4 py-2">Acciones</th>
+                                <th class="px-4 py-2">Categorías asociadas</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,6 +44,9 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                         </form>
+                                    </td>
+                                    <td class="border px-4 py-2">
+                                        <a href="{{ route('ediciones.categorias.index', ['edicion' => $edicion]) }}" class="btn btn-sm btn-primary">Ver Categorias</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Categorias') }}
+            {{ __('Categorias de la Edición: ') }} {{ $edicion->curso_escolar }}
         </h2>
     </x-slot>
 
@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <a href="{{ route('categorias.create') }}" class="button primary">Crear Categoria</a>
+                    <a href="{{ route('ediciones.categorias.create', ['edicion' => $edicion]) }}" class="button primary">Crear Categoria</a>
                     <table class="table-auto w-full">
                         <thead>
                             <tr>
