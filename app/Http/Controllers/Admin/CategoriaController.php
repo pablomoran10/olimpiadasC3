@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
+
+    public function edicionId($id)
+    {
+        $edicion = session(['edicion_id' => $id]);
+        return redirect()->route('ediciones.categorias.index', ['edicion' => $edicion]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -25,16 +31,17 @@ class CategoriaController extends Controller
      */
     public function create(Edicion $edicion)
     {
-        $categorias = $edicion->categorias;
-        return view('admin.categorias.create', compact('categoria'));
+        $categoria = new Categoria;
+        return view('admin.categorias.create', compact('categoria', 'edicion'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Categoria $categoria)
+    public function edit(Edicion $edicion, Categoria $categoria)
     {
-        return view('admin.categorias.edit', compact('categoria'));
+        return view('admin.categorias.edit', compact('categoria', 'edicion'));
     }
 
     public function show(Categoria $categoria)
@@ -72,18 +79,24 @@ class CategoriaController extends Controller
         $categoria->nombre = $request->nombre;
         $categoria->descripcion = $request->descripcion;
         $categoria->save();
+        $edicion = $categoria->ediciones->first();
 
-        return redirect()->route('admin.ediciones.index', ['edicion' => $edicion])->with('success', 'Categoria actualizada correctamente.');
+        return redirect()->route('ediciones.categorias.index', ['edicion' => $edicion])
+            ->with('success', 'Categoría actualizada correctamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Categoria $categoria)
-    {
-        $edicion = $categoria->edicion;
-        $categoria->delete();
+{
+    $edicion = $categoria->ediciones->first();
 
-        return redirect()->route('edicion.categorias.index', ['edicion' => $edicion])->with('success', 'Categoria eliminada correctamente.');
-    }
+    $categoria->ediciones()->detach();
+
+    $categoria->delete();
+
+    return redirect()->route('ediciones.categorias.index', $edicion)->with('success', 'Categoría eliminada correctamente.');
+}
+
 }

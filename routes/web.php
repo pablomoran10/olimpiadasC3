@@ -41,7 +41,6 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function ()
     Route::get('/', function () {
         return redirect()->route('grupos.index');
     })->name('dashboard');
-    //Route::resource('categorias', CategoriaController::class);
     Route::resource('centros', CentroController::class);
     Route::resource('ciclos', CicloController::class);
     Route::resource('ediciones', EdicionController::class)
@@ -65,4 +64,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
